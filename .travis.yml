@@ -1,1 +1,26 @@
-language: java
+language: android
+android:
+  components:
+    # Uncomment the lines below if you want to
+    # use the latest revision of Android SDK Tools
+    # - platform-tools
+    # - tools
+    # The BuildTools version used by your project
+    - build-tools-29.0.1
+    # The SDK version used to compile your project
+    - android-29
+      # Specify at least one system image,
+      # if you need to run emulator(s) during your tests
+      - sys-img-armeabi-v7a-android-19
+      - sys-img-x86-android-17
+
+deploy:
+  provider: releases
+  api_key:
+    secure: cee2e960a553aee711526c4b1a8274330cecb139
+  file: app/build/outputs/apk/app-release.apk
+  skip_cleanup: true
+  on:
+    tags: true
+    all_branches: true
+
